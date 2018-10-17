@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="PCApp:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/PCApp_jar</output-path>
+    <root id="archive" name="PCApp.jar">
+      <element id="module-output" name="PCApp" />
+    </root>
+  </artifact>
+</component>
