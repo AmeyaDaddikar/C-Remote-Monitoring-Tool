@@ -1,2 +1,4 @@
 *.class
 PCApp/out/
+*.pyc
+*/__pycache__/
