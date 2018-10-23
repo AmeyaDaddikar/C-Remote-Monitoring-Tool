@@ -2,6 +2,7 @@ from socketclass import Mysocket
 from filetransfer import *
 from keyboard import *
 from mousepos import *
+from video import init_video_feed
 
 DISCONNECT=0
 FILESEND=1
@@ -15,6 +16,8 @@ def display_options():
     print("4) KEYBOARD")
     print("5) CONNECT")
     print("6) CHANGE CONNECTED PC")
+    print("7) VIDEO (debugging)")
+
     choice = int(input("Enter the option number"))
     return(choice - 1)
 
@@ -60,3 +63,5 @@ while True:
         connections()
     elif(choice == 5):
         pres_sock = choose_socket()
+    elif(choice == 6):
+        init_video_feed(pres_sock)

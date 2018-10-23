@@ -6,7 +6,7 @@ def send_file_name(sc):
     sc.send_int(len(temp))
     sc.send(temp)
 
-def rec_file(sc):
+def rec_file(sc, saveFile = True):
     print("Here")
     size = sc.receiveint()
     total_size = 0
@@ -25,6 +25,11 @@ def rec_file(sc):
             break
         print(data)
         total_contents += data
-    name = raw_input("Enter the name you want to save with")
-    tempfile=open(name,"wb")
-    tempfile.write(total_contents)
+    
+    if saveFile:
+        name = raw_input("Enter the name you want to save with")
+        tempfile=open(name,"wb")
+        tempfile.write(total_contents)
+        return
+    
+    return total_contents
