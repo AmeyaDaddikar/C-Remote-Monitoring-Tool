@@ -1,4 +1,4 @@
-import tkinter
+import Tkinter as tkinter
 from socketclass import Mysocket
 from filetransfer import *
 
