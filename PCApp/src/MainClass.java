@@ -30,8 +30,7 @@ public class MainClass {
             exit(0);
         }
 
-//        Timer videoTimer = new Timer();
-//        videoTimer.schedule(new VideoTransfer(NetworkAPI.connect()), 10, 10);
+        Timer videoTimer = new Timer();
 
 //        try {
 //            Thread.currentThread().join();
@@ -43,6 +42,7 @@ public class MainClass {
             if(connection == null) {
                 continue;
             }
+            videoTimer.schedule(new VideoTransfer(connection), 10, 10);
             FileTransfer fileTransfer = new FileTransfer();
             /*try {
                 fileTransfer.getSize(connection);
@@ -63,6 +63,7 @@ public class MainClass {
                         mouseKeyboardControl.mouseMove(connection);
                         break;
                     case DISCONNECT:
+                        videoTimer.cancel();
                         break;
                     default:
                         mouseKeyboardControl.keyInput(data);

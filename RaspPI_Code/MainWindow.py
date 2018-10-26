@@ -1,6 +1,7 @@
 import Tkinter as tkinter
 from socketclass import Mysocket
 from filetransfer import *
+from video import VideoWindow
 
 DISCONNECT=0
 FILESEND=1
@@ -38,7 +39,7 @@ class MainWindow:
         sock.connect(ip)
         self.sock_list.append(sock)
         self.sock_num = len(self.sock_list) - 1
-        m = tkinter.Tk()
+        m = VideoWindow(self, sock)
         # m.mainloop()
         print("Window ready")
 
