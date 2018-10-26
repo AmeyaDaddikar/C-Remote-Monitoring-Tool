@@ -30,46 +30,46 @@ public class MainClass {
             exit(0);
         }
 
-        Timer videoTimer = new Timer();
-        videoTimer.schedule(new VideoTransfer(NetworkAPI.connect()), 10, 10);
+//        Timer videoTimer = new Timer();
+//        videoTimer.schedule(new VideoTransfer(NetworkAPI.connect()), 10, 10);
 
-        try {
-            Thread.currentThread().join();
-        }catch(InterruptedException interrupExp) {
-            System.out.println("Interrupted the join due to exception");
-        }
-//        while(true) {
-//            connection = NetworkAPI.connect();
-//            if(connection == null) {
-//                continue;
-//            }
-//            FileTransfer fileTransfer = new FileTransfer();
-//            /*try {
-//                fileTransfer.getSize(connection);
-//            } catch (IOException e) {
-//                e.printStackTrace();
-//            }*/
-//            do {
-//                data = connection.recieveByte();
-//                if(data == null)
-//                    continue;
-//                System.out.println(data);
-//                switch (data) {
-//                    case FILESEND:
-//                        System.out.println("Sending file");
-//                        fileTransfer.sendFile(connection);
-//                        break;
-//                    case MOUSE_MOVE:
-//                        mouseKeyboardControl.mouseMove(connection);
-//                        break;
-//                    case DISCONNECT:
-//                        break;
-//                    default:
-//                        mouseKeyboardControl.keyInput(data);
-//                }
-//            }while(data != DISCONNECT);
-//            NetworkAPI.disconnect(connection);
-//            System.out.println("Disconnected");
+//        try {
+//            Thread.currentThread().join();
+//        }catch(InterruptedException interrupExp) {
+//            System.out.println("Interrupted the join due to exception");
 //        }
+        while(true) {
+            connection = NetworkAPI.connect();
+            if(connection == null) {
+                continue;
+            }
+            FileTransfer fileTransfer = new FileTransfer();
+            /*try {
+                fileTransfer.getSize(connection);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }*/
+            do {
+                data = connection.recieveByte();
+                if(data == null)
+                    continue;
+                System.out.println(data);
+                switch (data) {
+                    case FILESEND:
+                        System.out.println("Sending file");
+                        fileTransfer.sendFile(connection);
+                        break;
+                    case MOUSE_MOVE:
+                        mouseKeyboardControl.mouseMove(connection);
+                        break;
+                    case DISCONNECT:
+                        break;
+                    default:
+                        mouseKeyboardControl.keyInput(data);
+                }
+            }while(data != DISCONNECT);
+            NetworkAPI.disconnect(connection);
+            System.out.println("Disconnected");
+        }
     }
 }
