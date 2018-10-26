@@ -1,12 +1,11 @@
 from socketclass import Mysocket
 
-def send_file_name(sc):
-    temp=raw_input("enter the file name u want")
+def send_file_name(sc,temp):
     print(temp)
     sc.send_int(len(temp))
     sc.send(temp)
 
-def rec_file(sc, saveFile = True):
+def rec_file(sc, name, saveFile = True):
     print("Here")
     size = sc.receiveint()
     total_size = 0
@@ -27,7 +26,7 @@ def rec_file(sc, saveFile = True):
         total_contents += data
     
     if saveFile:
-        name = raw_input("Enter the name you want to save with")
+        # name = raw_input("Enter the name you want to save with")
         tempfile=open(name,"wb")
         tempfile.write(total_contents)
         return

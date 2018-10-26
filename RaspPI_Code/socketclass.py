@@ -12,7 +12,7 @@ class Mysocket:
 		except socket.error as err:
 			print("Error occured",err)
 	def disconnect(self):
-		self.c.close()
+		self.s.close()
 	def send_int(self,i):
 		self.s.sendall(struct.pack('I',i))
 	def send(self,str):

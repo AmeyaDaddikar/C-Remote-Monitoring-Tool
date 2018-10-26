@@ -37,6 +37,7 @@ class MainWindow:
         ip = self.conEntry.get()
         sock.connect(ip)
         self.sock_list.append(sock)
+        self.sock_num = len(self.sock_list) - 1
         m = tkinter.Tk()
         # m.mainloop()
         print("Window ready")
@@ -47,10 +48,11 @@ class MainWindow:
 
     def filetransfer(self):
         self.sock_list[self.sock_num].send_int(FILESEND)
-        send_file_name(self.sock_list[self.sock_num])
-        rec_file(self.sock_list[self.sock_num])
+        file_name = self.fileEntry.get()
+        send_file_name(self.sock_list[self.sock_num], file_name)
+        rec_file(self.sock_list[self.sock_num], "OK")
 
     def choose_socket(self):
-        pres_sock = int(input("Enter the number of the socket you want to choose"))
-        return(pres_sock - 1)
+        pres_sock = self.chEntry.getint()
+        self.sock_num = (pres_sock - 1)
 
