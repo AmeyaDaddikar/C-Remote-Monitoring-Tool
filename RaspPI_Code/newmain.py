@@ -3,7 +3,7 @@ from filetransfer import *
 from keyboard import *
 from mousepos import *
 from video import init_video_feed
-import tkinter
+import Tkinter as tkinter
 from MainWindow import MainWindow as mw
 
 # MOUSE_MOVE=2
