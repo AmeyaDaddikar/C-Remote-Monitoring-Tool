@@ -9,7 +9,7 @@ def get_key(sock):
             ch = sys.stdin.read(1)
             if(ch == '\n'):
                 break
-            print ch
+            print(ch)
             sock.send_int(ord(ch))
     finally:
             termios.tcsetattr(fd, termios.TCSADRAIN, old_settings)

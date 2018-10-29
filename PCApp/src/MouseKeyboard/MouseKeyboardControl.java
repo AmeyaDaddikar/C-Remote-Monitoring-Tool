@@ -15,6 +15,7 @@ public final class MouseKeyboardControl {
     public void mouseMove(Connection connection) {
         Integer x = connection.recieveInt();
         Integer y = connection.recieveInt();
+//        System.out.println(x + " " + y);
         robot.mouseMove(x,y);
     }
 
@@ -24,7 +25,7 @@ public final class MouseKeyboardControl {
         int key = KeyEvent.getExtendedKeyCodeForChar(data);
 //        System.out.println("Int key " + ch);
 //        System.out.println("A " + KeyEvent.VK_A);
-        System.out.println("A " + KeyEvent.getExtendedKeyCodeForChar((byte)'A') + " a " + KeyEvent.getExtendedKeyCodeForChar((byte)'a'));
+        System.out.println((char)data);
         if(Character.isUpperCase((char)data)) {
             doType(KeyEvent.VK_SHIFT, key);
         }
