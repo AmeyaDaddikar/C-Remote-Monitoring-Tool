@@ -1,11 +1,11 @@
-import tkinter
-
 from MouseThread import MouseThread
 from KeyThread import KeyThread
 from socketclass import Mysocket
-from filetransfer import *
 from mousepos import *
 from keyboard import *
+import tkinter
+from filetransfer import *
+from video import VideoWindow
 
 DISCONNECT=0
 FILESEND=1
@@ -57,7 +57,7 @@ class MainWindow:
         sock.connect(ip)
         self.sock_list.append(sock)
         self.setSock(len(self.sock_list) - 1)
-        m = tkinter.Tk()
+        m = VideoWindow(self, self.sock_list[self.sock_num])
         # m.mainloop()
         print("Window ready")
 
