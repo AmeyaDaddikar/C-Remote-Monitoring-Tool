@@ -3,7 +3,7 @@ from socketclass import Mysocket
 def send_file_name(sc,temp):
     print(temp)
     sc.send_int(len(temp))
-    sc.send(temp)
+    sc.send(temp.encode())
 
 def rec_file(sc, name, saveFile = True):
     print("Here")

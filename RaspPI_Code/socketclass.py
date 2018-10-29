@@ -5,16 +5,35 @@ class Mysocket:
 	port=9999
 	def __init__(self):
 		self.s=socket.socket(socket.AF_INET,socket.SOCK_STREAM)
+		self.vid=socket.socket(socket.AF_INET,socket.SOCK_STREAM)
+		self.mouse=socket.socket(socket.AF_INET,socket.SOCK_STREAM)
+		self.key=socket.socket(socket.AF_INET,socket.SOCK_STREAM)
 		print("socket successfully created")
 	def connect(self,ip):	
 		try:
 			self.s.connect((ip,self.port))
+			self.vid.connect((ip,self.port+1))
+			self.mouse.connect((ip,self.port+2))
+			self.key.connect((ip,self.port+3))
 		except socket.error as err:
 			print("Error occured",err)
-	def disconnect(self):
+	def disconnect(self,discon):
+		self.s.sendall(struct.pack('I',discon))
+		self.vid.sendall(struct.pack('I',discon))
+		self.mouse.sendall(struct.pack('I',discon))
+		self.key.sendall(struct.pack('I',discon))
 		self.s.close()
+		self.vid.close()
+		self.mouse.close()
+		self.key.close()
 	def send_int(self,i):
 		self.s.sendall(struct.pack('I',i))
+	def send_int_vid(self,i):
+		self.vid.sendall(struct.pack('I',i))
+	def send_int_mouse(self,i):
+		self.mouse.sendall(struct.pack('I',i))
+	def send_int_key(self,i):
+		self.key.sendall(struct.pack('I',i))
 	def send(self,str):
 		self.s.sendall(str)
 	def sendbyte(self):
